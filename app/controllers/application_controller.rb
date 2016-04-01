@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   # http://www.sitepoint.com/devise-authentication-in-depth/
   before_action :configure_permitted_params, if: :devise_controller?
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
   protected
   def configure_permitted_params
     devise_parameter_sanitizer.for(:sign_up) << :name
