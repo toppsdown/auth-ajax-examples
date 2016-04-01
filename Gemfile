@@ -39,6 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'devise', '~> 3.5.6'
 
 group :development, :test do
   gem 'pry-rails'
