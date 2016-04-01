@@ -1,13 +1,2 @@
 <span class='header'>Submit a new message</span>
-<div class='form-group post-box new-post-form'>
-<%= form_for @post do |f| %>
-  <div class='post-creator-entry'>
-    <span>Posting as: <span class='bold'><%= current_user.name %></span></span>
-  </div>
-  <div class='post-body-entry'>
-    <span>Enter your message here:</span>
-    <span class='entry'><%= f.text_area :body, class: 'form-control' %></span>
-  </div>
-  <div class='form-group'><%= f.submit 'Post your message', class: 'btn btn-primary' %></div>
-<% end %>
-</div>
+<%= render 'post_form' %>
