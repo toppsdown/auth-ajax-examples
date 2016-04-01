@@ -1,5 +1,9 @@
 
 <div class='header'><span>All Postings</span></div>
-<% @posts.each do |post| %>
-  <%= render partial: 'post', locals: {post: post} %>
+<% if @posts.empty? %>
+<span>Sorry, nothing has been posted here</span>
+<% else %>
+  <% @posts.each do |post| %>
+    <%= render partial: 'post', locals: {post: post} %>
+  <% end %>
 <% end %>

@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331020728) do
+ActiveRecord::Schema.define(version: 20160401001456) do
 
   create_table "posts", force: true do |t|
-    t.string   "creator"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
   end
+
+  add_index "posts", ["creator_id"], name: "index_posts_on_creator_id"
 
   create_table "users", force: true do |t|
     t.string   "name",                                null: false
