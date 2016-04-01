@@ -30,7 +30,11 @@ class Ability
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     user ||= User.new
-    can :read, Post # this means that all users can read all posts
-    can :manage, Post, creator_id: user.id # this means that a user can edit a post if it belongs to them
+    if user.is_role?(:moderator)
+      can :manage, Post
+    elsif user.is_role?(:member)
+      can :read, Post # this means that all users can read all posts
+      can :manage, Post, creator_id: user.id # this means that a user can edit a post if it belongs to them
+    end
   end
 end
